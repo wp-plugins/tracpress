@@ -1,5 +1,5 @@
 === TracPress ===
-Contributors: Ciprian Popescu
+Contributors: butterflymedia
 Tags: ticket, issue, tracker, bug, management
 License: GPLv3
 Requires at least: 4.0
