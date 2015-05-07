@@ -45,22 +45,18 @@ function tracpress_admin_page() {
 								Use the shortcode tag <code>[tracpress-show]</code> in any post or page to display all tickets.<br>
 								Use the shortcode tag <code>[tracpress-search]</code> in any post or page to show the search form.<br>
 								<br>
-								Use the shortcode tag <code>[tracpress-timeline milestone="83"]</code> in any post or page to display all tickets in a specific category (milestone). Use the category <b>ID</b>.<br>
-								Use the shortcode tag <code>[tracpress-milestone category="83"]</code> in any post or page to display a milestone meter (based on category). Use the category <b>ID</b>.<br>
+								Use the shortcode tag <code>[tracpress-timeline milestone="83"]</code> in any post or page to display all tickets in a specific category (milestone). Use the milestone <b>ID</b>.<br>
+								Use the shortcode tag <code>[tracpress-milestone category="83"]</code> in any post or page to display a milestone meter. Use the milestone <b>ID</b>.<br>
+								Use the shortcode tag <code>[tracpress-show component="83"]</code> in any post or page to display all tickets in the specified component. Use the component <b>ID</b>.<br>
 							</p>
-
-							<h4>Help and support</h4>
-							<p>Check the <a href="http://getbutterfly.com/wordpress-plugins/tracpress/" rel="external">official web site</a> for news, updates and general help.</p>
-                            <!--
-                            <p>workflow: has-patch, commit, fixed-major, dev-feedback, needs-testing, early, needs-refresh, close, accessibility, needs-ui, tested</p>
-                            <p>statuses: assigned, reopened, new, reviewing, accepted, closed</p>
-                            <p>types: defect (bug), enhancement, feature request</p>
-                            <p>priorities: low, normal, high, critical</p>
-                            <p>severities: blocker, major, minor, normal</p>
-                            <p>resolutions: fixed, invalid, wontfix, done, wontdo, postpone</p>
-                            -->
 						</div>
 					</div>
+                    <div class="postbox">
+                        <div class="inside">
+                            <p>For support, feature requests and bug reporting, please visit the <a href="//getbutterfly.com/" rel="external">official website</a>.</p>
+                            <p>&copy;' . date('Y') . ' <a href="//getbutterfly.com/" rel="external"><strong>getButterfly</strong>.com</a> &middot; <a href="//getbutterfly.com/trac/" rel="external">Trac</a> &middot; <small>Code wrangling since 2005</small></p>
+                        </div>
+                    </div>
 				</div>
 			</div>';
 		} ?>

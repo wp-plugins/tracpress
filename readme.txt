@@ -3,8 +3,8 @@ Contributors: butterflymedia
 Tags: ticket, issue, tracker, bug, management
 License: GPLv3
 Requires at least: 4.0
-Tested up to: 4.1.1
-Stable tag: 1.3
+Tested up to: 4.2.2
+Stable tag: 1.4
 
 == Description ==
 
@@ -17,6 +17,11 @@ TracPress is an enhanced issue tracking system for software development projects
 4. A new TracPress menu will appear in WordPress with options and general help
 
 == Changelog ==
+
+= 1.4 =
+* FIX: Removed wrong title sanitization
+* FEATURE: Added component shortcode to list all tickets in the specified component
+* UPDATE: Updated meter style
 
 = 1.3 =
 * UPDATE: Updated plugin URL

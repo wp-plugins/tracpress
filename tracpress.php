@@ -3,7 +3,7 @@
 Plugin Name: TracPress
 Plugin URI: http://getbutterfly.com/wordpress-plugins-free/
 Description: TracPress is an enhanced issue tracking system for software development projects. TracPress uses a minimalistic approach to web-based software project management. TracPress is a WordPress-powered ticket manager and issue tracker featuring multiple projects, multiple users, milestones, attachments and much more.
-Version: 1.3
+Version: 1.4
 License: GPLv3
 Author: Ciprian Popescu
 Author URI: http://getbutterfly.com/
@@ -26,7 +26,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 define('TP_PLUGIN_URL', WP_PLUGIN_URL . '/' . dirname(plugin_basename(__FILE__)));
 define('TP_PLUGIN_PATH', WP_PLUGIN_DIR . '/' . dirname(plugin_basename(__FILE__)));
-define('TP_PLUGIN_VERSION', '1.3');
+define('TP_PLUGIN_VERSION', '1.4');
 
 // plugin localization
 load_plugin_textdomain('tracpress', false, dirname(plugin_basename(__FILE__)) . '/languages/');
@@ -88,7 +88,7 @@ function tracpress_add($atts, $content = null) {
             $tp_image_author = $current_user->ID;
         }
         $ticket_data = array(
-            'post_title' => sanitize_title($_POST['ticket_summary']),
+            'post_title' => sanitize_text_field($_POST['ticket_summary']),
             'post_content' => sanitize_text_field($_POST['ticket_description']),
             'post_status' => $tp_status,
             'post_author' => $tp_image_author,
@@ -482,8 +482,7 @@ function tracpress_milestone($atts, $content = null) {
     $closedposts = get_posts($args);
     $closedposts = count($closedposts);
 
-    $out .= '<meter class="meter" value="' . $closedposts . '" min="0" max="' . $openposts . '" low="" high="" optimum="">' . $closedposts . '/' . $openposts . '</meter><br>';
-    $out .= '<p><small>Total number of tickets: <b>' . $openposts . '</b> (closed: <b>' . $closedposts . '</b>, active: <b>' . ($openposts - $closedposts) . '</b>)</small></p>';
+    $out .= '<meter class="meter" value="' . $closedposts . '" min="0" max="' . $openposts . '" low="" high="" optimum="">' . $closedposts . '/' . $openposts . '</meter><div class="tp-meter-details">Total number of tickets: <b>' . $openposts . '</b> (closed: <b>' . $closedposts . '</b>, active: <b>' . ($openposts - $closedposts) . '</b>)</div>';
     return $out;
 }
 
@@ -494,7 +493,7 @@ function tracpress_milestone($atts, $content = null) {
  */
 function tracpress_show($atts, $content = null) {
 	extract(shortcode_atts(array(
-		'category'    => '',
+		'component'    => '',
 		'count'       => 0,
         'limit'       => 999999,
 		'user'        => 0,
@@ -529,7 +528,7 @@ function tracpress_show($atts, $content = null) {
                 array(
                     'taxonomy' => 'tracpress_ticket_component',
                     'field' => 'id',
-                    'terms' => $category,
+                    'terms' => $component,
                     'include_children' => false
                 )
             ),
@@ -597,7 +596,7 @@ function tracpress_show($atts, $content = null) {
 
             $out .= '<tr>';
                 if(get_option('tp_id_optional') == 1)
-                    $out .= '<td>#' . $ticket->ID . '</td>';
+                    $out .= '<td><code>#' . $ticket->ID . '</code></td>';
                 if(get_option('tp_summary_optional') == 1)
                     $out .= '<td><a href="' . get_permalink($ticket->ID) . '">' . get_the_title($ticket->ID) . '</a></td>';
                 if(get_option('tp_author_optional') == 1)
